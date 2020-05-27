@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	ul.dog
+		li.dog.dog
+	div
+		- calc = 55 + 45;
+		p hello! My name is #{name.toUpperCase()}
+		span Le résultat est: #{calc}
+		h1 Sales ends #{h.moment().endOf('day').fromNow(true)}
