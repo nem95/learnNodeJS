@@ -26,7 +26,7 @@ exports.addStore = (req, res) => {
 
 exports.upload = multer(multerOptions).single('photo');
 
-exports.resize = async (req, res, next) => {
+exports.resize = async (req, res, next) => {
   if (!req.file) {
     return next();
   }
@@ -90,6 +90,6 @@ exports.getStoresByTag = async (req, res) => {
   const [tags, stores] = await Promise.all([
     tagsPromise,
     storesPromise,
-  ])
+  ]);
   res.render('tag', { tags, title: 'Tags', tag, stores });
-}
+};
