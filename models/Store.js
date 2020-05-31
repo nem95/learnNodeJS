@@ -40,6 +40,11 @@ const storeSchema = new mongoose.Schema({
   }
 });
 
+storeSchema.index({
+  name: 'text',
+  description: 'text',
+});
+
 storeSchema.pre('save', async function(next) {
   if (!this.isModified('name')) {
     return next();
@@ -57,7 +62,7 @@ storeSchema.pre('save', async function(next) {
   next();
 });
 
-storeSchema.statics.getTagsList = function (params) {
+storeSchema.statics.getTagsList = function () {
  return this.aggregate([
     { $unwind: '$tags' },
     { $group: {
@@ -65,6 +70,6 @@ storeSchema.statics.getTagsList = function (params) {
       count: { $sum: 1 }
     }},
     { $sort: { count: -1 }},
- ])
-}
+ ]);
+};
 module.exports = mongoose.model('store', storeSchema);
