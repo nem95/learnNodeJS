@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const storeController = require('../controllers/storeController');
-const userController = require('../controllers/userController');
-const authcontroller = require('../controllers/authcontroller');
-const reviewController = require('../controllers/reviewController');
+const storeController = require('./../controllers/storeController');
+const userController = require('./../controllers/userController');
+const authcontroller = require('./../controllers/authcontroller');
+const reviewController = require('./../controllers/reviewController');
 
-const { catchErrors } = require('../handlers/errorHandlers');
+const { catchErrors } = require('./../handlers/errorHandlers');
 
 router.get('/', catchErrors(storeController.getStores));
 router.get('/add', authcontroller.isLoggedIn ,storeController.addStore);
