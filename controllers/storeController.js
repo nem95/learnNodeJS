@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Store = mongoose.model('store');
+const Store = mongoose.model('Store');
 const User = mongoose.model('User');
 const multer = require('multer');
 const jimp = require('jimp');
@@ -55,7 +55,7 @@ exports.getStores = async (req, res) => {
 };
 
 exports.getStoreBySlug = async (req, res, next) => {
-  const store = await (await Store.findOne({ slug: req.params.slug })).populate('author');
+  const store = await Store.findOne({ slug: req.params.slug }).populate('author reviews');
 
   if (!store) return next();
 
