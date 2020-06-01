@@ -22,6 +22,7 @@ router.post('/add/:id',
 );
 
 router.get('/stores', catchErrors(storeController.getStores));
+router.get('/stores/page/:page', catchErrors(storeController.getStores));
 router.get('/stores/:slug', catchErrors(storeController.getStoreBySlug));
 router.get('/stores/:id/edit',
   authcontroller.isLoggedIn,
