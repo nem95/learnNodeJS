@@ -55,6 +55,8 @@ router.post('/account/reset/:token',
   catchErrors(authcontroller.update)
 );
 
+router.get('/map', storeController.mapPage);
+
 /*
   API endpoint
 */
