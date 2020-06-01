@@ -56,6 +56,7 @@ router.post('/account/reset/:token',
 );
 
 router.get('/map', storeController.mapPage);
+router.get('/hearts', authcontroller.isLoggedIn, catchErrors(storeController.getHearts));
 
 /*
   API endpoint
@@ -63,5 +64,6 @@ router.get('/map', storeController.mapPage);
 
 router.get('/api/search', catchErrors(storeController.searchStores));
 router.get('/api/stores/near', catchErrors(storeController.mapStores));
+router.post('/api/stores/:id/heart', catchErrors(storeController.hearStore));
 
 module.exports = router;

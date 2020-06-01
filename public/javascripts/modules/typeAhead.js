@@ -17,7 +17,6 @@ function typeAhead(search) {
   const searchInput = search.querySelector('input[name="search"]');
   const searchResults = search.querySelector('.search__results');
 
-  console.log(searchInput, searchResults);
   searchInput.on('input', function () {
     const val = this.value;
 
