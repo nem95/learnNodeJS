@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const path = require('path');
-const storeController = require(path.join(__dirname, '../controllers/storeController'));
-const userController = require(path.join(__dirname, '../controllers/userController'));
-const authcontroller = require(path.join(__dirname, '../controllers/authcontroller'));
-const reviewController = require(path.join(__dirname, '../controllers/reviewController'));
-const { catchErrors } = require(path.join(__dirname, '../handlers/errorHandlers'));
+const storeController = require('../controllers/storeController');
+const userController = require('../controllers/userController');
+const authcontroller = require('../controllers/authController');
+const reviewController = require('../controllers/reviewController');
+
+const { catchErrors } = require('../handlers/errorHandlers');
 
 router.get('/', catchErrors(storeController.getStores));
 router.get('/add', authcontroller.isLoggedIn ,storeController.addStore);
